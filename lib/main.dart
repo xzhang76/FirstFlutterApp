@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primaryColor: Colors.white,
       ),
+      // 由RandomWordsState管理，这使得用户在下一步中从一个屏幕导航到另一个屏幕时， 可以更轻松地更改导航栏中的的路由名称。
       home: new RandomWords(),
     );
   }
@@ -27,6 +28,9 @@ class RandomWordsState extends State<RandomWords> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   void _pushSaved() {
+    //将路由推入（push）到导航器的栈中，将会显示更新为该路由页面。 从导航器的栈中弹出（pop）路由，将显示返回到前一个路由。
+    //建立一个路由并将其推入到导航管理器栈中
+    //推入到导航管理器的栈
     Navigator.of(context).push(
       new MaterialPageRoute(
         builder: (context) {
@@ -40,6 +44,7 @@ class RandomWordsState extends State<RandomWords> {
               );
             },
           );
+          //ListTile.divideTiles() 在每个ListTile之间添加1像素的分割线
           final divided =
               ListTile.divideTiles(tiles: titles, context: context).toList();
           return new Scaffold(
@@ -80,6 +85,7 @@ class RandomWordsState extends State<RandomWords> {
         // 在偶数行，该函数会为单词对添加一个ListTile row.
         // 在奇数行，该函数会添加一个分割线widget，来分隔相邻的词对。
         // 注意，在小屏幕上，分割线看起来可能比较吃力。
+        // 匿名回调函数
         itemBuilder: (context, i) {
           // 在每一列之前，添加一个1像素高的分隔线widget
           if (i.isOdd) return new Divider();
