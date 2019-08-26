@@ -17,7 +17,7 @@ class TutorialHome extends StatelessWidget {
         ],
       ),
       body: new Center(
-        child: new Text('Hello World'),
+        child: new MyButton(),
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: null,
@@ -25,4 +25,34 @@ class TutorialHome extends StatelessWidget {
       ),
     );
   }
+}
+
+class MyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new GestureDetector(
+      onTap: () {
+        print('MyButton was tapped');
+      },
+      onDoubleTap: () {
+        print('MyButton was double tapped');
+      },
+      onLongPress: () {
+        print('MyButton was long pressed');
+      },
+      child: new Container(
+        height: 36.0,
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        decoration: new BoxDecoration(
+          borderRadius: new BorderRadius.circular(5.0),
+          color: Colors.blue,
+        ),
+        child: new Center(
+          child: new Text('Engage'),
+        ),
+      ),
+    );
+  }
+
 }
