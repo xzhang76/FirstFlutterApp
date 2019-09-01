@@ -26,6 +26,12 @@ class TutorialHome extends StatelessWidget {
     );
   }
 }
+
+//这两种类型的对象具有不同的生命周期：
+// Counter(StatefulWidget)是临时对象，用于构建当前状态下的应用程序;
+// _MyButton(State)对象在多次调用build()之间保持不变，允许它们记住信息(状态)
+// 如果构建一个StatefulWidget,那么会有State对象和其搭配
+
 class Counter extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -45,11 +51,10 @@ class _MyButton extends State<Counter> {
 
   @override
   Widget build(BuildContext context) {
-    return new RaisedButton(
+    return new FloatingActionButton(
       onPressed: () {
         _increment();
       },
-      color: Colors.transparent,
       child: new Container(
         height: 36.0,
         padding: const EdgeInsets.all(8.0),
@@ -59,7 +64,7 @@ class _MyButton extends State<Counter> {
           color: Colors.blue,
         ),
         child: new Center(
-          child: new Text('Count: $_count'),
+          child: new Text('$_count'),
         ),
       ),
     );
