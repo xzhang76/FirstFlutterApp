@@ -29,22 +29,13 @@ class TutorialHome extends StatelessWidget {
 class Counter extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new _CounterState();
+    return new _MyButton();
   }
 
 }
 
-class _CounterState extends State<Counter> {
+class _MyButton extends State<Counter> {
   int _count = 0;
-  @override
-  Widget build(BuildContext context) {
-    return new Column(
-      children: <Widget>[
-        new RaisedButton(onPressed: _increment),
-        new Text('Count: $_count'),
-      ],
-    );
-  }
 
   void _increment() {
     setState(() {
@@ -52,4 +43,25 @@ class _CounterState extends State<Counter> {
     });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return new RaisedButton(
+      onPressed: () {
+        _increment();
+      },
+      color: Colors.transparent,
+      child: new Container(
+        height: 36.0,
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        decoration: new BoxDecoration(
+          borderRadius: new BorderRadius.circular(5.0),
+          color: Colors.blue,
+        ),
+        child: new Center(
+          child: new Text('Count: $_count'),
+        ),
+      ),
+    );
+  }
 }
