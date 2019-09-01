@@ -35,12 +35,11 @@ class TutorialHome extends StatelessWidget {
 class Counter extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new _MyButton();
+    return new _Counter();
   }
-
 }
 
-class _MyButton extends State<Counter> {
+class _Counter extends State<Counter> {
   int _count = 0;
 
   void _increment() {
@@ -51,22 +50,42 @@ class _MyButton extends State<Counter> {
 
   @override
   Widget build(BuildContext context) {
-    return new FloatingActionButton(
-      onPressed: () {
-        _increment();
-      },
-      child: new Container(
-        height: 36.0,
-        padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: new BoxDecoration(
-          borderRadius: new BorderRadius.circular(5.0),
-          color: Colors.blue,
-        ),
-        child: new Center(
-          child: new Text('$_count'),
-        ),
-      ),
+    return new Column(
+      children: <Widget>[
+        new CounterAdder(onPressed: _increment),
+        new CounterDisplay(count: _count)
+      ],
     );
+  }
+}
+
+class CounterAdder extends StatelessWidget {
+  CounterAdder({this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      height: 100.0,
+      padding: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: new BoxDecoration(
+        borderRadius: new BorderRadius.circular(15.0),
+        color: Colors.blue,
+      ),
+      child: new RaisedButton(onPressed: onPressed, child: new Icon(Icons.add),),
+    );
+  }
+}
+
+class CounterDisplay extends StatelessWidget {
+  CounterDisplay({this.count});
+
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Text('Counter: $count');
   }
 }
