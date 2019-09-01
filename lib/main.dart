@@ -17,7 +17,7 @@ class TutorialHome extends StatelessWidget {
         ],
       ),
       body: new Center(
-        child: new MyButton(),
+        child: new Counter(),
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: null,
@@ -26,33 +26,30 @@ class TutorialHome extends StatelessWidget {
     );
   }
 }
+class Counter extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new _CounterState();
+  }
 
-class MyButton extends StatelessWidget {
+}
+
+class _CounterState extends State<Counter> {
+  int _count = 0;
   @override
   Widget build(BuildContext context) {
-    return new GestureDetector(
-      onTap: () {
-        print('MyButton was tapped');
-      },
-      onDoubleTap: () {
-        print('MyButton was double tapped');
-      },
-      onLongPress: () {
-        print('MyButton was long pressed');
-      },
-      child: new Container(
-        height: 36.0,
-        padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: new BoxDecoration(
-          borderRadius: new BorderRadius.circular(5.0),
-          color: Colors.blue,
-        ),
-        child: new Center(
-          child: new Text('Engage'),
-        ),
-      ),
+    return new Column(
+      children: <Widget>[
+        new RaisedButton(onPressed: _increment),
+        new Text('Count: $_count'),
+      ],
     );
+  }
+
+  void _increment() {
+    setState(() {
+      _count++;
+    });
   }
 
 }
