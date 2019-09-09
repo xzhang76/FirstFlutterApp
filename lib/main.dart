@@ -33,16 +33,23 @@ class _MyVolumeWidgetState extends State<MyVolumeWidget> {
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            new IconButton(icon: new Icon(Icons.volume_up), onPressed: () {
-              setState(() {
-                _volume += 10;
-              });
-            }),
-            new IconButton(icon: new Icon(Icons.volume_down), onPressed: () {
-              setState(() {
-                _volume += -10;
-              });
-            }),
+            new Ink(
+              decoration: new ShapeDecoration(shape: CircleBorder(), color: Colors.lightBlue),
+              child: new IconButton(icon: new Icon(Icons.volume_up), onPressed: () {
+                setState(() {
+                  _volume += 10;
+                });
+              }),
+            ),
+
+            new Ink(
+              decoration: new ShapeDecoration(shape: CircleBorder(), color: Colors.redAccent),
+              child: new IconButton(icon: new Icon(Icons.volume_down), onPressed: () {
+                setState(() {
+                  _volume += -10;
+                });
+              }),
+            ),
             new Text("Current Volume: $_volume"),
           ],
         ),
