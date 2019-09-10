@@ -33,24 +33,30 @@ class _MyVolumeWidgetState extends State<MyVolumeWidget> {
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            new Ink(
-              decoration: new ShapeDecoration(shape: CircleBorder(), color: Colors.lightBlue),
-              child: new IconButton(icon: new Icon(Icons.volume_up), onPressed: () {
-                setState(() {
-                  _volume += 10;
-                });
-              }),
+            const RaisedButton(
+              onPressed: null,
+              child: Text('Disabled Button', style: TextStyle(fontSize: 10)),
             ),
-
-            new Ink(
-              decoration: new ShapeDecoration(shape: CircleBorder(), color: Colors.redAccent),
-              child: new IconButton(icon: new Icon(Icons.volume_down), onPressed: () {
-                setState(() {
-                  _volume += -10;
-                });
-              }),
+            const SizedBox(height: 30),
+            new RaisedButton(
+                onPressed: () {},
+                child: Text('enabled Button', style: TextStyle(fontSize: 10))),
+            const SizedBox(height: 30),
+            new RaisedButton(
+              onPressed: () {},
+              textColor: Colors.white,
+              padding: const EdgeInsets.all(0.0),
+              child: new Container(
+                  decoration: const BoxDecoration(
+                      gradient: LinearGradient(colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ])),
+                  padding: const EdgeInsets.all(15.0),
+                  child: new Text('Gradient Button',
+                      style: TextStyle(fontSize: 10))),
             ),
-            new Text("Current Volume: $_volume"),
           ],
         ),
       ),
