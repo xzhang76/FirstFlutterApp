@@ -10,56 +10,33 @@ void main() => runApp(new MaterialApp(
             new IconButton(icon: new Icon(Icons.search), onPressed: null)
           ],
         ),
-        body: new MyVolumeWidget(),
+        body: new MyStatefulWidget(),
       ),
     ));
 
-double _volume = 0.0;
-
-class MyVolumeWidget extends StatefulWidget {
-  const MyVolumeWidget({Key key}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _MyVolumeWidgetState();
+    return new _MyStatefulWidgetState();
   }
 }
 
-class _MyVolumeWidgetState extends State<MyVolumeWidget> {
+int _count = 0;
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: new Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const RaisedButton(
-              onPressed: null,
-              child: Text('Disabled Button', style: TextStyle(fontSize: 10)),
-            ),
-            const SizedBox(height: 30),
-            new RaisedButton(
-                onPressed: () {},
-                child: Text('enabled Button', style: TextStyle(fontSize: 10))),
-            const SizedBox(height: 30),
-            new RaisedButton(
-              onPressed: () {},
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
-              child: new Container(
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                    Color(0xFF0D47A1),
-                    Color(0xFF1976D2),
-                    Color(0xFF42A5F5),
-                  ])),
-                  padding: const EdgeInsets.all(15.0),
-                  child: new Text('Gradient Button',
-                      style: TextStyle(fontSize: 10))),
-            ),
-          ],
-        ),
+        child: new Text('Pressed button $_count times.'),
       ),
+      backgroundColor: Colors.blueAccent.shade200,
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        setState(() {
+          _count++;
+        });
+      }, child: const Icon(Icons.add),),
     );
   }
 }
