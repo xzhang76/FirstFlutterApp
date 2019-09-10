@@ -37,6 +37,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           _count++;
         });
       }, child: const Icon(Icons.add),),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Container(height: 50.0,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
