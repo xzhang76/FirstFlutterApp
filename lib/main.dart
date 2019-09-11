@@ -14,46 +14,33 @@ class BasicAppBarSample extends StatefulWidget {
 }
 
 class _BasicAppBarSampleState extends State<BasicAppBarSample> {
-  Choice _selectedChoice = choices[0];
-
-  void _selectChoice(Choice choice) {
-    setState(() {
-      _selectedChoice = choice;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Scaffold(
-          appBar: new AppBar(
-            title: const Text('Basic AppBar'),
-            actions: <Widget>[
-              new IconButton(
-                  icon: new Icon(choices[0].icon),
-                  onPressed: () {
-                    _selectChoice(choices[0]);
-                  }),
-              new IconButton(
-                  icon: new Icon(choices[1].icon),
-                  onPressed: () {
-                    _selectChoice(choices[1]);
-                  }),
-              new PopupMenuButton<Choice>(
-                  itemBuilder: (BuildContext context) {
-                    return choices.skip(2).map((Choice choice) {
-                      return new PopupMenuItem<Choice>(
-                        child: new Text(choice.title),
-                        value: choice,
-                      );
-                    }).toList();
-                  },
-                  onSelected: _selectChoice),
-            ],
-          ),
-          body: new Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: new ChoiceCard(choice: _selectedChoice))),
+      home: new DefaultTabController(
+          length: choices.length,
+          child: new Scaffold(
+            appBar: new AppBar(
+              title: new Text('Tabbed Appbar'),
+              bottom: new TabBar(
+                  isScrollable: true,
+                  tabs: choices.map((Choice choice) {
+                    return new Tab(
+                      text: choice.title,
+                      icon: new Icon(choice.icon),
+                    );
+                  }).toList()),
+            ),
+            body: new TabBarView(
+                children: choices.map((Choice choice) {
+              return new Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: new ChoiceCard(
+                    choice: choice,
+                  ));
+            }).toList()),
+          )),
     );
   }
 }

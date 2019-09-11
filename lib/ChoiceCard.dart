@@ -12,7 +12,7 @@ class ChoiceCard extends StatelessWidget {
 
     return new Card(
       color: Colors.white,
-      elevation: 30.0,
+      elevation: 20.0,
       child: new Center(
         child: new Column(
           mainAxisSize: MainAxisSize.min,
