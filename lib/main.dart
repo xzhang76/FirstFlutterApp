@@ -1,46 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/Choice.dart';
-import 'package:myapp/ChoiceCard.dart';
 
 void main() => runApp(new BasicAppBarSample());
 
-class BasicAppBarSample extends StatefulWidget {
-  const BasicAppBarSample({Key key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return new _BasicAppBarSampleState();
-  }
-}
-
-class _BasicAppBarSampleState extends State<BasicAppBarSample> {
-
+class BasicAppBarSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new DefaultTabController(
-          length: choices.length,
-          child: new Scaffold(
-            appBar: new AppBar(
-              title: new Text('Tabbed Appbar'),
-              bottom: new TabBar(
-                  isScrollable: true,
-                  tabs: choices.map((Choice choice) {
-                    return new Tab(
-                      text: choice.title,
-                      icon: new Icon(choice.icon),
-                    );
-                  }).toList()),
-            ),
-            body: new TabBarView(
-                children: choices.map((Choice choice) {
-              return new Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: new ChoiceCard(
-                    choice: choice,
-                  ));
-            }).toList()),
-          )),
+      title: 'AppBar demo',
+      home: new MyStatelessWidget(),
     );
   }
+}
+
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
+
+class MyStatelessWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      key: scaffoldKey,
+      appBar: new AppBar(
+        title: new Text('AppBar demo'),
+        actions: <Widget>[
+          new IconButton(
+              icon: const Icon(Icons.add_alert),
+              tooltip: 'Show SnackBar',
+              onPressed: () {
+                scaffoldKey.currentState.showSnackBar(snackBar);
+              }),
+          new IconButton(
+              icon: const Icon(Icons.navigate_next),
+              tooltip: 'Next Page',
+              onPressed: () {
+                openNextPage(context);
+              })
+        ],
+      ),
+      body: const Center(
+        child: Text(
+          'This is the home page',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}
+
+void openNextPage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Next Page'),
+      ),
+      body: const Center(
+        child: Text('This is next Page', style: TextStyle(fontSize: 24),),
+      ),
+    );
+  }));
 }
