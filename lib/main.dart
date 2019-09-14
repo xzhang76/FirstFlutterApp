@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/listItem.dart';
 import 'package:myapp/snackBar.dart';
+import 'package:myapp/myBottomNavigationBar.dart';
 
 
 void main() => runApp(new BasicAppBarSample());
@@ -55,6 +56,8 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
     onTap: () {
       if(index == 0) {
         snackBarDemo(context);
+      } else if(index == 1) {
+        bottomNavigationBarDemo(context);
       }
     },
   );
@@ -63,5 +66,11 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
 void snackBarDemo(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return new SnackBarWidget();
+  }));
+}
+
+void bottomNavigationBarDemo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new MyBottomNavigationBar();
   }));
 }

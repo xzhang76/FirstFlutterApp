@@ -9,7 +9,7 @@ class ListItem {
 
 const List<ListItem> choices = const <ListItem>[
   const ListItem(title: 'SnackBar', icon: Icons.looks_one),
-  const ListItem(title: 'Bicycle', icon: Icons.directions_bike),
+  const ListItem(title: 'BottomNavigationBar', icon: Icons.looks_two),
   const ListItem(title: 'Boat', icon: Icons.directions_boat),
   const ListItem(title: 'Bus', icon: Icons.directions_bus),
   const ListItem(title: 'Railway', icon: Icons.directions_railway),
