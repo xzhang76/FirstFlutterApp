@@ -23,8 +23,7 @@ class _SimpleAppBarState extends State<SimpleAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
+    return new Scaffold(
           appBar: new AppBar(
             title: const Text('Basic AppBar'),
             actions: <Widget>[
@@ -52,7 +51,8 @@ class _SimpleAppBarState extends State<SimpleAppBar> {
           ),
           body: new Padding(
               padding: const EdgeInsets.all(16.0),
-              child: new ChoiceCard(choice: _selectedChoice))),
+              child: new ChoiceCard(choice: _selectedChoice)
+          ),
     );
   }
 }

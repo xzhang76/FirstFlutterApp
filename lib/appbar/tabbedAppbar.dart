@@ -16,8 +16,7 @@ class _TabbedAppBarSampleState extends State<TabbedAppBarSample> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new DefaultTabController(
+    return new DefaultTabController(
           length: choices.length,
           child: new Scaffold(
             appBar: new AppBar(
@@ -39,7 +38,7 @@ class _TabbedAppBarSampleState extends State<TabbedAppBarSample> {
                         choice: choice,
                       ));
                 }).toList()),
-          )),
+          ),
     );
   }
 }
