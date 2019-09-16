@@ -3,6 +3,7 @@ import 'package:myapp/listItem.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/myBottomNavigationBar.dart';
 
+import 'appbar/simpleAppbar.dart';
 import 'appbar/tabbedAppbar.dart';
 
 
@@ -62,6 +63,8 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
         bottomNavigationBarDemo(context);
       } else if(index == 2) {
         tabbedAppbarBarDemo(context);
+      } else if(index == 3) {
+        simpleAppbarDemo(context);
       }
     },
   );
@@ -82,5 +85,11 @@ void bottomNavigationBarDemo(BuildContext context) {
 void tabbedAppbarBarDemo(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return new TabbedAppBarSample();
+  }));
+}
+
+void simpleAppbarDemo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new SimpleAppBar();
   }));
 }
