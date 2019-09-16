@@ -3,6 +3,8 @@ import 'package:myapp/listItem.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/myBottomNavigationBar.dart';
 
+import 'appbar/tabbedAppbar.dart';
+
 
 void main() => runApp(new BasicAppBarSample());
 
@@ -32,8 +34,8 @@ class MyStatelessWidget extends StatelessWidget {
             // 时，结果为0, 1, 1, 2, 2， 这可以计算出ListView中减去分隔线后的实际单词对数量
             final index = i ~/ 2;
             // 如果是建议列表中最后一个单词对
-            if(index < choices.length) {
-              return _buildRow(choices[index], context, index);
+            if(index < itemList.length) {
+              return _buildRow(itemList[index], context, index);
             }
             return null;
           }),
@@ -58,6 +60,8 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
         snackBarDemo(context);
       } else if(index == 1) {
         bottomNavigationBarDemo(context);
+      } else if(index == 2) {
+        tabbedAppbarBarDemo(context);
       }
     },
   );
@@ -72,5 +76,11 @@ void snackBarDemo(BuildContext context) {
 void bottomNavigationBarDemo(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return new MyBottomNavigationBar();
+  }));
+}
+
+void tabbedAppbarBarDemo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new TabbedAppBarSample();
   }));
 }
