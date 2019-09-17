@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/listItem.dart';
+import 'package:myapp/raisedbutton/myRaisedButton.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/myBottomNavigationBar.dart';
 
@@ -68,6 +69,8 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
         simpleAppbarDemo(context);
       } else if(index == 4) {
         bottomBarWithText(context);
+      } else if(index == 5) {
+        raisedButtonDemo(context);
       }
     },
   );
@@ -100,5 +103,11 @@ void simpleAppbarDemo(BuildContext context) {
 void bottomBarWithText(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return new BottomBarWithTextCenter();
+  }));
+}
+
+void raisedButtonDemo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new MyRaisedButton();
   }));
 }
