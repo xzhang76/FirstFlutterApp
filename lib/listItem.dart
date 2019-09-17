@@ -12,7 +12,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'BottomNavigationBar', icon: Icons.looks_two),
   const ListItem(title: 'TabbedAppbar', icon: Icons.apps),
   const ListItem(title: 'SimpleAppbar', icon: Icons.label),
-  const ListItem(title: 'Railway', icon: Icons.directions_railway),
+  const ListItem(title: 'BottomBarWithText', icon: Icons.book),
   const ListItem(title: 'Walk', icon: Icons.directions_walk),
   const ListItem(title: 'Subway', icon: Icons.directions_subway),
 ];
