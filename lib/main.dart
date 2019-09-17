@@ -8,6 +8,7 @@ import 'appbar/tabbedAppbar.dart';
 import 'bottombar/bottomBar.dart';
 import 'button/iconButton.dart';
 import 'button/myRaisedButton.dart';
+import 'drawer/MyHomePage.dart';
 
 
 void main() => runApp(new BasicAppBarSample());
@@ -74,6 +75,8 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
         raisedButtonDemo(context);
       } else if(index == 6) {
         iconButtonDemo(context);
+      } else if(index == 7) {
+        drawerDemo(context);
       }
     },
   );
@@ -118,5 +121,11 @@ void raisedButtonDemo(BuildContext context) {
 void iconButtonDemo(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return new MyIconButton();
+  }));
+}
+
+void drawerDemo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new MyHomePageWidget();
   }));
 }
