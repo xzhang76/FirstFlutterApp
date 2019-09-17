@@ -14,5 +14,5 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'SimpleAppbar', icon: Icons.label),
   const ListItem(title: 'BottomBarWithText', icon: Icons.book),
   const ListItem(title: 'RaisedButton', icon: Icons.restaurant),
-  const ListItem(title: 'Subway', icon: Icons.directions_subway),
+  const ListItem(title: 'IconButton', icon: Icons.import_contacts),
 ];
