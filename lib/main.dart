@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/listItem.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/myBottomNavigationBar.dart';
+import 'package:myapp/widgets/MyWidgetsHome.dart';
 
 import 'appbar/simpleAppbar.dart';
 import 'appbar/tabbedAppbar.dart';
@@ -77,6 +78,8 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
         iconButtonDemo(context);
       } else if(index == 7) {
         drawerDemo(context);
+      } else if(index == 8) {
+        widgetsDemo(context);
       }
     },
   );
@@ -127,5 +130,11 @@ void iconButtonDemo(BuildContext context) {
 void drawerDemo(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return new MyHomePageWidget();
+  }));
+}
+
+void widgetsDemo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new MyWidgetHome();
   }));
 }
