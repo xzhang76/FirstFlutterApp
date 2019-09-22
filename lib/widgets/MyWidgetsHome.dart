@@ -31,6 +31,9 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
                 labelText: 'Password',
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             Chip(
               avatar: CircleAvatar(
                 backgroundColor: Colors.grey.shade800,
@@ -38,12 +41,17 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
               ),
               label: Text('Aaron Burr'),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             new RaisedButton(
                 onPressed: () {
                   _askedToLead(context);
                 },
                 child: Text('enabled Button', style: TextStyle(fontSize: 10))),
-            const SizedBox(height: 30),
+            const SizedBox(
+              height: 10,
+            ),
             new RaisedButton(
               onPressed: () {
                 _neverSatisfied(context);
@@ -53,13 +61,62 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
               child: new Container(
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(colors: <Color>[
-                        Color(0xFF0D47A1),
-                        Color(0xFF1976D2),
-                        Color(0xFF42A5F5),
-                      ])),
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ])),
                   padding: const EdgeInsets.all(15.0),
                   child: new Text('Gradient Button',
                       style: TextStyle(fontSize: 10))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Card(
+              child: InkWell(
+                splashColor: Colors.blue.withAlpha(30),
+                onTap: () {
+                  print('Card tapped.');
+                },
+                child: Container(
+                  width: 300,
+                  height: 100,
+                  child: Text('A card that can be tapped'),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(
+                      Icons.music_video,
+                      color: Colors.red,
+                    ),
+                    title: Text('收好不哭'),
+                    subtitle: Text('周杰伦&阿信最新单曲'),
+                  ),
+                  ButtonTheme.bar(
+                    // make buttons use the appropriate styles for cards
+                    child: ButtonBar(
+                      children: <Widget>[
+                        FlatButton(
+                          child: const Text('BUY TICKETS'),
+                          onPressed: () {},
+                        ),
+                        FlatButton(
+                          child: const Text('LISTEN'),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -93,11 +150,11 @@ Future<void> _askedToLead(BuildContext context) async {
         );
       })) {
     case Department.treasury:
-    // Let's go.
-    // ...
+      // Let's go.
+      // ...
       break;
     case Department.state:
-    // ...
+      // ...
       break;
   }
 }
@@ -129,4 +186,3 @@ Future<void> _neverSatisfied(BuildContext context) async {
     },
   );
 }
-
