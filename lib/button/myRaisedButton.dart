@@ -2,22 +2,19 @@ import 'package:flutter/material.dart';
 
 
 class MyRaisedButton extends StatefulWidget {
-  final String message;
-  const MyRaisedButton({Key key,  this.message}) : super(key: key);
+  const MyRaisedButton({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _MyRaisedButtonState(message);
+    return new _MyRaisedButtonState();
   }
 }
 
 class _MyRaisedButtonState extends State<MyRaisedButton> {
-  final String message;
 
-  _MyRaisedButtonState(this.message);
-  
   @override
   Widget build(BuildContext context) {
+    var arguments = ModalRoute.of(context).settings.arguments;
     return new Scaffold(
       appBar: AppBar(
         title: new Text('Raised Button Response'),
@@ -26,7 +23,7 @@ class _MyRaisedButtonState extends State<MyRaisedButton> {
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(message),
+            Text(arguments),
             const SizedBox(height: 30),
             const RaisedButton(
               onPressed: null,

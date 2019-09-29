@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/listItem.dart';
-import 'package:myapp/radiobutton/MyRadioDemo.dart';
-import 'package:myapp/snackBar.dart';
-import 'package:myapp/myBottomNavigationBar.dart';
-import 'package:myapp/widgets/MyWidgetsHome.dart';
-
-import 'appbar/simpleAppbar.dart';
-import 'appbar/tabbedAppbar.dart';
-import 'bottombar/bottomBar.dart';
-import 'button/iconButton.dart';
-import 'button/myRaisedButton.dart';
-import 'drawer/MyHomePage.dart';
 
 
 void main() => runApp(new BasicAppBarSample());
@@ -21,9 +10,11 @@ class BasicAppBarSample extends StatelessWidget {
     return new MaterialApp(
       title: 'AppBar demo',
       home: new MyStatelessWidget(),
+      routes: routes,
     );
   }
 }
+
 
 class MyStatelessWidget extends StatelessWidget {
   @override
@@ -42,7 +33,7 @@ class MyStatelessWidget extends StatelessWidget {
             final index = i ~/ 2;
             // 如果是建议列表中最后一个单词对
             if(index < itemList.length) {
-              return _buildRow(itemList[index], context, index);
+              return _buildRow(itemList[index], context);
             }
             return null;
           }),
@@ -50,7 +41,7 @@ class MyStatelessWidget extends StatelessWidget {
   }
 }
 
-Widget _buildRow(ListItem item, BuildContext context, int index) {
+Widget _buildRow(ListItem item, BuildContext context) {
   return new ListTile(
     title: new Text(
       item.title,
@@ -62,89 +53,9 @@ Widget _buildRow(ListItem item, BuildContext context, int index) {
     trailing: new Icon(
       Icons.navigate_next,
     ),
-    onTap: () {
-      if(index == 0) {
-        snackBarDemo(context);
-      } else if(index == 1) {
-        bottomNavigationBarDemo(context);
-      } else if(index == 2) {
-        tabbedAppbarBarDemo(context);
-      } else if(index == 3) {
-        simpleAppbarDemo(context);
-      } else if(index == 4) {
-        bottomBarWithText(context);
-      } else if(index == 5) {
-        raisedButtonDemo(context);
-      } else if(index == 6) {
-        iconButtonDemo(context);
-      } else if(index == 7) {
-        drawerDemo(context);
-      } else if(index == 8) {
-        widgetsDemo(context);
-      } else if(index == 9) {
-        radioDemo(context);
-      }
+    onTap: () async {
+      var response = await Navigator.pushNamed(context, item.title, arguments: "From my parent");
+      print("返回值为: $response");
     },
   );
-}
-
-void snackBarDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new SnackBarWidget();
-  }));
-}
-
-void bottomNavigationBarDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyBottomNavigationBar();
-  }));
-}
-
-void tabbedAppbarBarDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new TabbedAppBarSample();
-  }));
-}
-
-void simpleAppbarDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new SimpleAppBar();
-  }));
-}
-
-void bottomBarWithText(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new BottomBarWithTextCenter();
-  }));
-}
-
-Future raisedButtonDemo(BuildContext context) async {
-  var response = await Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyRaisedButton(message: "From my parent");
-  }));
-  print("返回值为: $response");
-}
-
-void iconButtonDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyIconButton();
-  }));
-}
-
-void drawerDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyHomePageWidget();
-  }));
-}
-
-void widgetsDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyWidgetHome();
-  }));
-}
-
-void radioDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyRadioWidget();
-  }));
 }

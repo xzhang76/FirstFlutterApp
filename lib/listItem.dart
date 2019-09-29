@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/radiobutton/MyRadioDemo.dart';
+import 'package:myapp/snackBar.dart';
+import 'package:myapp/widgets/MyWidgetsHome.dart';
+
+import 'appbar/simpleAppbar.dart';
+import 'appbar/tabbedAppbar.dart';
+import 'bottombar/bottomBar.dart';
+import 'button/iconButton.dart';
+import 'button/myRaisedButton.dart';
+import 'drawer/MyHomePage.dart';
+import 'myBottomNavigationBar.dart';
 
 class ListItem {
   final String title;
@@ -19,3 +30,16 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'Widgets', icon: Icons.wc),
   const ListItem(title: 'Radio', icon: Icons.radio),
 ];
+
+Map<String, WidgetBuilder> routes = {
+  itemList[0].title: (context) => SnackBarWidget(),
+  itemList[1].title: (context) => MyBottomNavigationBar(),
+  itemList[2].title: (context) => TabbedAppBarSample(),
+  itemList[3].title: (context) => SimpleAppBar(),
+  itemList[4].title: (context) => BottomBarWithTextCenter(),
+  itemList[5].title: (context) => MyRaisedButton(),
+  itemList[6].title: (context) => MyIconButton(),
+  itemList[7].title: (context) => MyHomePageWidget(),
+  itemList[8].title: (context) => MyWidgetHome(),
+  itemList[9].title: (context) => MyRadioWidget(),
+};
