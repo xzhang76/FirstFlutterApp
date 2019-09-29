@@ -118,10 +118,11 @@ void bottomBarWithText(BuildContext context) {
   }));
 }
 
-void raisedButtonDemo(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new MyRaisedButton();
+Future raisedButtonDemo(BuildContext context) async {
+  var response = await Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new MyRaisedButton(message: "From my parent");
   }));
+  print("返回值为: $response");
 }
 
 void iconButtonDemo(BuildContext context) {

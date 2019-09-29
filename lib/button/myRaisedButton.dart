@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 
+
 class MyRaisedButton extends StatefulWidget {
-  const MyRaisedButton({Key key}) : super(key: key);
+  final String message;
+  const MyRaisedButton({Key key,  this.message}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _MyRaisedButtonState();
+    return new _MyRaisedButtonState(message);
   }
 }
 
 class _MyRaisedButtonState extends State<MyRaisedButton> {
+  final String message;
+
+  _MyRaisedButtonState(this.message);
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: new Text('Raised Button'),
+        title: new Text('Raised Button Response'),
       ),
       body: new Center(
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Text(message),
+            const SizedBox(height: 30),
             const RaisedButton(
               onPressed: null,
               child: Text('Disabled Button', style: TextStyle(fontSize: 10)),
@@ -27,9 +35,9 @@ class _MyRaisedButtonState extends State<MyRaisedButton> {
             const SizedBox(height: 30),
             new RaisedButton(
                 onPressed: () {
-                  _askedToLead(context);
+                  Navigator.pop(context, "response form child");
                 },
-                child: Text('enabled Button', style: TextStyle(fontSize: 10))),
+                child: Text('Return', style: TextStyle(fontSize: 10))),
             const SizedBox(height: 30),
             new RaisedButton(
               onPressed: () {

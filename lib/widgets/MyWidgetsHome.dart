@@ -97,7 +97,7 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
                       Icons.music_video,
                       color: Colors.red,
                     ),
-                    title: Text('收好不哭'),
+                    title: Text('说好不哭'),
                     subtitle: Text('周杰伦&阿信最新单曲'),
                   ),
                   ButtonTheme.bar(
