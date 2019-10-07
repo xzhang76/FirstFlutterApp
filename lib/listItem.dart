@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
+import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/widgets/MyWidgetsHome.dart';
 
@@ -29,6 +30,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'Drawer', icon: Icons.cloud_done),
   const ListItem(title: 'Widgets', icon: Icons.wc),
   const ListItem(title: 'Radio', icon: Icons.radio),
+  const ListItem(title: 'Route', icon: Icons.blur_linear),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -42,4 +44,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[7].title: (context) => MyHomePageWidget(),
   itemList[8].title: (context) => MyWidgetHome(),
   itemList[9].title: (context) => MyRadioWidget(),
+  itemList[10].title: (context) => MyBottomNavigationBar(),
 };

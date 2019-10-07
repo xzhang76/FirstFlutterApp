@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/routedemo/MyRouteHome.dart';
 
 class MyBottomNavigationBar extends StatefulWidget {
   @override
@@ -11,11 +12,7 @@ class _MyBottomNavigationBar extends State<MyBottomNavigationBar> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const List<Widget> _widgetList = <Widget>[
-    Icon(
-      Icons.home,
-      size: 108,
-      color: Colors.lightBlue,
-    ),
+    MyRouteHome(),
     Icon(
       Icons.business,
       size: 108,
