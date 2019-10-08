@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class MyRouteHome extends StatelessWidget {
@@ -8,9 +9,10 @@ class MyRouteHome extends StatelessWidget {
     return new Navigator(
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder;
+        Scaffold scaffold = context.ancestorWidgetOfExactType(Scaffold);
         switch (settings.name) {
           case 'home':
-            builder = (BuildContext context) => new HomePage();
+            builder = (BuildContext context) => new HomePage(contextText: (scaffold.appBar as AppBar).title);
             break;
           case 'login':
             builder = (BuildContext context) => new LoginPage();
@@ -26,6 +28,9 @@ class MyRouteHome extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  final Widget contextText;
+
+  const HomePage({Key key, @required this.contextText}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -43,6 +48,7 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed('login');
                 },
               ),
+              contextText,
             ],
           ),
         ),
