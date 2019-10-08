@@ -72,6 +72,11 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
             const SizedBox(
               height: 10,
             ),
+            //移除这一行体验State的生命周期
+            new MyStatefulWidget(),
+            const SizedBox(
+              height: 10,
+            ),
             Card(
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(30),
@@ -80,7 +85,7 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
                 },
                 child: Container(
                   width: 300,
-                  height: 100,
+                  height: 50,
                   child: Text('A card that can be tapped'),
                 ),
               ),
@@ -185,4 +190,68 @@ Future<void> _neverSatisfied(BuildContext context) async {
       );
     },
   );
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  final int initValue;
+
+  const MyStatefulWidget({Key key, this.initValue: 0}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return new _MyStatefulWidget();
+  }
+}
+
+class _MyStatefulWidget extends State<MyStatefulWidget> {
+  int _counter;
+
+  @override
+  void initState() {
+    super.initState();
+    _counter = widget.initValue;
+    print("initState");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies");
+  }
+
+  @override
+  void didUpdateWidget(MyStatefulWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactivate");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("reassemble");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print("build");
+    return new RaisedButton(
+        onPressed: () {
+          setState(() {
+            ++_counter;
+          });
+        },
+        child: Text('$_counter', style: TextStyle(fontSize: 10)));
+  }
 }
