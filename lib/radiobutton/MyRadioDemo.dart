@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/widgets/MyStateManager.dart';
 
 class MyRadioWidget extends StatefulWidget {
   @override
@@ -44,6 +45,7 @@ class _MyRadioWidgetState extends State<MyRadioWidget> {
                     _radioChanged(value);
                   }),
             ),
+            new MyParentWidget(),
           ],
         ),
       ),
