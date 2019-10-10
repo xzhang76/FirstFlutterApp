@@ -14,55 +14,83 @@ class MyHomePageWidget extends StatefulWidget {
 class _MyHomePageWidgetState extends State<MyHomePageWidget> {
   @override
   Widget build(BuildContext context) {
+    var img = NetworkImage("https://avatars2.githubusercontent.com/u/20411648?s=460&v=4");
     return new Scaffold(
       appBar: AppBar(
         title: new Text('Drawer Demo'),
       ),
-      body: new Center(
-        child: new Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            new FlatButton(
-              color: Colors.blue,
-              textColor: Colors.white,
-              disabledColor: Colors.grey,
-              disabledTextColor: Colors.black,
-              padding: EdgeInsets.all(8.0),
-              splashColor: Colors.blueAccent,
-              onPressed: () {
-                /*...*/
-              },
-              child: Text(
-                "Flat Button",
-                style: TextStyle(fontSize: 20.0),
+      body: SingleChildScrollView(
+        child: Column(
+            children: <Image>[
+              Image(
+                image: img,
+                height: 50.0,
+                width: 100.0,
+                fit: BoxFit.fill,
               ),
-            ),
-            const SizedBox(height: 30),
-            const RaisedButton(
-              onPressed: null,
-              child: Text('Disabled Button', style: TextStyle(fontSize: 10)),
-            ),
-            const SizedBox(height: 30),
-            new RaisedButton(
-                onPressed: () {},
-                child: Text('enabled Button', style: TextStyle(fontSize: 10))),
-            const SizedBox(height: 30),
-            new RaisedButton(
-              onPressed: () {},
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
-              child: new Container(
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                    Color(0xFF0D47A1),
-                    Color(0xFF1976D2),
-                    Color(0xFF42A5F5),
-                  ])),
-                  padding: const EdgeInsets.all(15.0),
-                  child: new Text('Gradient Button',
-                      style: TextStyle(fontSize: 10))),
-            ),
-          ],
+              Image(
+                image: img,
+                height: 50,
+                width: 50.0,
+                fit: BoxFit.contain,
+              ),
+              Image(
+                image: img,
+                width: 100.0,
+                height: 50.0,
+                fit: BoxFit.cover,
+              ),
+              Image(
+                image: img,
+                width: 100.0,
+                height: 50.0,
+                fit: BoxFit.fitWidth,
+              ),
+              Image(
+                image: img,
+                width: 100.0,
+                height: 50.0,
+                fit: BoxFit.fitHeight,
+              ),
+              Image(
+                image: img,
+                width: 100.0,
+                height: 50.0,
+                fit: BoxFit.scaleDown,
+              ),
+              Image(
+                image: img,
+                height: 50.0,
+                width: 100.0,
+                fit: BoxFit.none,
+              ),
+              Image(
+                image: img,
+                width: 100.0,
+                color: Colors.blue,
+                colorBlendMode: BlendMode.difference,
+                fit: BoxFit.fill,
+              ),
+              Image(
+                image: img,
+                width: 100.0,
+                height: 200.0,
+                repeat: ImageRepeat.repeatY ,
+              )
+            ].map((e){
+              return Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: SizedBox(
+                      width: 100,
+                      child: e,
+                    ),
+                  ),
+                  Text(e.fit.toString())
+                ],
+              );
+            }).toList()
         ),
       ),
       drawer: new Drawer(
