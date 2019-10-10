@@ -8,7 +8,7 @@ import 'appbar/simpleAppbar.dart';
 import 'appbar/tabbedAppbar.dart';
 import 'bottombar/bottomBar.dart';
 import 'button/iconButton.dart';
-import 'button/myRaisedButton.dart';
+import 'button/myAllButton.dart';
 import 'drawer/MyHomePage.dart';
 import 'myBottomNavigationBar.dart';
 
@@ -25,7 +25,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'TabbedAppbar', icon: Icons.apps),
   const ListItem(title: 'SimpleAppbar', icon: Icons.label),
   const ListItem(title: 'BottomBarWithText', icon: Icons.book),
-  const ListItem(title: 'RaisedButton', icon: Icons.restaurant),
+  const ListItem(title: 'MyButton', icon: Icons.restaurant),
   const ListItem(title: 'IconButton', icon: Icons.import_contacts),
   const ListItem(title: 'Drawer', icon: Icons.cloud_done),
   const ListItem(title: 'Widgets', icon: Icons.wc),
@@ -39,7 +39,7 @@ Map<String, WidgetBuilder> routes = {
   itemList[2].title: (context) => TabbedAppBarSample(),
   itemList[3].title: (context) => SimpleAppBar(),
   itemList[4].title: (context) => BottomBarWithTextCenter(),
-  itemList[5].title: (context) => MyRaisedButton(),
+  itemList[5].title: (context) => MyButton(),
   itemList[6].title: (context) => MyIconButton(),
   itemList[7].title: (context) => MyHomePageWidget(),
   itemList[8].title: (context) => MyWidgetHome(),

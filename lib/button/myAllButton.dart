@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-
-class MyRaisedButton extends StatefulWidget {
-  const MyRaisedButton({Key key}) : super(key: key);
+class MyButton extends StatefulWidget {
+  const MyButton({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _MyRaisedButtonState();
+    return new _MyButtonState();
   }
 }
 
-class _MyRaisedButtonState extends State<MyRaisedButton> {
-
+class _MyButtonState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
     var arguments = ModalRoute.of(context).settings.arguments;
@@ -53,6 +51,25 @@ class _MyRaisedButtonState extends State<MyRaisedButton> {
                   child: new Text('Gradient Button',
                       style: TextStyle(fontSize: 10))),
             ),
+            RaisedButton.icon(
+                onPressed: () {}, icon: Icon(Icons.send), label: Text('发送')),
+            OutlineButton.icon(
+                onPressed: () {}, icon: Icon(Icons.add), label: Text('添加')),
+            FlatButton.icon(
+                onPressed: () {}, icon: Icon(Icons.info), label: Text('详情')),
+            RaisedButton(
+              color: Colors.blue,
+              highlightColor: Colors.blue[700],
+              colorBrightness: Brightness.dark,
+              splashColor: Colors.grey,
+              child: Text('submit'),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              onPressed: () {},
+              elevation: 2.0,
+              highlightElevation: 8.0,
+              disabledElevation: 0.0,
+            ),
           ],
         ),
       ),
@@ -85,11 +102,11 @@ Future<void> _askedToLead(BuildContext context) async {
         );
       })) {
     case Department.treasury:
-    // Let's go.
-    // ...
+      // Let's go.
+      // ...
       break;
     case Department.state:
-    // ...
+      // ...
       break;
   }
 }
@@ -121,4 +138,3 @@ Future<void> _neverSatisfied(BuildContext context) async {
     },
   );
 }
-
