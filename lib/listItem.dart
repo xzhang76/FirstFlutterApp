@@ -10,6 +10,7 @@ import 'bottombar/bottomBar.dart';
 import 'button/iconButton.dart';
 import 'button/myAllButton.dart';
 import 'drawer/MyHomePage.dart';
+import 'form/MyFormWidget.dart';
 import 'input/MyInputWidget.dart';
 import 'myBottomNavigationBar.dart';
 
@@ -33,6 +34,8 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'Radio', icon: Icons.radio),
   const ListItem(title: 'Route', icon: Icons.blur_linear),
   const ListItem(title: 'input', icon: Icons.input),
+  const ListItem(title: 'form', icon: Icons.format_align_center),
+
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -48,4 +51,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[9].title: (context) => MyRadioWidget(),
   itemList[10].title: (context) => MyBottomNavigationBar(),
   itemList[11].title: (context) => MyInputWidget(),
+  itemList[12].title: (context) => MyFormRoute(),
 };
