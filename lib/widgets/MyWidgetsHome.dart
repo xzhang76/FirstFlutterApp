@@ -205,6 +205,7 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidget extends State<MyStatefulWidget> {
   int _counter;
+  //https://book.flutterchina.club/chapter3/flutter_widget_intro.html
 
   @override
   void initState() {
