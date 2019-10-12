@@ -39,79 +39,82 @@ class _MyInputWidgetState extends State<MyInputWidget> {
       appBar: AppBar(
         title: new Text('Input Demo'),
       ),
-      body: Theme(
-        data: Theme.of(context).copyWith(
-            hintColor: Colors.grey[200], //定义下划线颜色
-            inputDecorationTheme: InputDecorationTheme(
-                labelStyle: TextStyle(color: Colors.red), //定义label字体样式
-                hintStyle:
-                    TextStyle(color: Colors.orange, fontSize: 14.0) //定义提示文本样式
-                )),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              autofocus: true,
-              decoration: InputDecoration(
-                  labelText: "用户名",
-                  hintText: "用户名或邮箱",
-                  prefixIcon: Icon(Icons.person),
-                  border: OutlineInputBorder()),
-              controller: _nameController,
-              focusNode: focusNode1,
-            ),
-            Container(
-              child: TextField(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+              hintColor: Colors.grey[200], //定义下划线颜色
+              inputDecorationTheme: InputDecorationTheme(
+                  labelStyle: TextStyle(color: Colors.red), //定义label字体样式
+                  hintStyle:
+                      TextStyle(color: Colors.orange, fontSize: 14.0) //定义提示文本样式
+                  )),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                autofocus: true,
                 decoration: InputDecoration(
-                    labelText: "密码",
-                    hintText: "您的登录密码",
-                    prefixIcon: Icon(Icons.lock),
-                    border: InputBorder.none),
-                obscureText: true,
-                focusNode: focusNode2,
+                    labelText: "用户名",
+                    hintText: "用户名或邮箱",
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder()),
+                controller: _nameController,
+                focusNode: focusNode1,
               ),
-              decoration: BoxDecoration(
-                  // 下滑线浅灰色，宽度1像素
-                  border: Border(
-                      bottom:
-                          BorderSide(color: Colors.green[200], width: 1.0))),
-            ),
-            FlatButton.icon(
-                onPressed: () {
-                  setState(() {
-                    input = _nameController.text;
-                  });
+              Container(
+                child: TextField(
+                  decoration: InputDecoration(
+                      labelText: "密码",
+                      hintText: "您的登录密码",
+                      prefixIcon: Icon(Icons.lock),
+                      border: InputBorder.none),
+                  obscureText: true,
+                  focusNode: focusNode2,
+                ),
+                decoration: BoxDecoration(
+                    // 下滑线浅灰色，宽度1像素
+                    border: Border(
+                        bottom:
+                            BorderSide(color: Colors.green[200], width: 1.0))),
+              ),
+              FlatButton.icon(
+                  onPressed: () {
+                    setState(() {
+                      input = _nameController.text;
+                    });
+                  },
+                  icon: Icon(Icons.info),
+                  label: Text('详情: $input')),
+              Builder(
+                builder: (ctx) {
+                  return Column(
+                    children: <Widget>[
+                      RaisedButton(
+                        child: Text("移动焦点"),
+                        onPressed: () {
+                          //将焦点从第一个TextField移到第二个TextField
+                          // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
+                          // 这是第二种写法
+                          if (null == focusScopeNode) {
+                            focusScopeNode = FocusScope.of(context);
+                          }
+                          focusScopeNode.requestFocus(focusNode2);
+                        },
+                      ),
+                      RaisedButton(
+                        child: Text("隐藏键盘"),
+                        onPressed: () {
+                          // 当所有编辑框都失去焦点时键盘就会收起
+                          focusNode1.unfocus();
+                          focusNode2.unfocus();
+                        },
+                      ),
+                    ],
+                  );
                 },
-                icon: Icon(Icons.info),
-                label: Text('详情: $input')),
-            Builder(
-              builder: (ctx) {
-                return Column(
-                  children: <Widget>[
-                    RaisedButton(
-                      child: Text("移动焦点"),
-                      onPressed: () {
-                        //将焦点从第一个TextField移到第二个TextField
-                        // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
-                        // 这是第二种写法
-                        if (null == focusScopeNode) {
-                          focusScopeNode = FocusScope.of(context);
-                        }
-                        focusScopeNode.requestFocus(focusNode2);
-                      },
-                    ),
-                    RaisedButton(
-                      child: Text("隐藏键盘"),
-                      onPressed: () {
-                        // 当所有编辑框都失去焦点时键盘就会收起
-                        focusNode1.unfocus();
-                        focusNode2.unfocus();
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
