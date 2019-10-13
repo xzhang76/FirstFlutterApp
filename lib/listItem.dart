@@ -4,6 +4,7 @@ import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/widgets/MyWidgetsHome.dart';
 
+import 'Flex/MyFlexWidget.dart';
 import 'appbar/simpleAppbar.dart';
 import 'appbar/tabbedAppbar.dart';
 import 'bottombar/bottomBar.dart';
@@ -33,9 +34,9 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'Widgets', icon: Icons.wc),
   const ListItem(title: 'Radio', icon: Icons.radio),
   const ListItem(title: 'Route', icon: Icons.blur_linear),
-  const ListItem(title: 'input', icon: Icons.input),
-  const ListItem(title: 'form', icon: Icons.format_align_center),
-
+  const ListItem(title: 'Input', icon: Icons.input),
+  const ListItem(title: 'Form', icon: Icons.format_align_center),
+  const ListItem(title: 'Flex', icon: Icons.new_releases),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -52,4 +53,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[10].title: (context) => MyBottomNavigationBar(),
   itemList[11].title: (context) => MyInputWidget(),
   itemList[12].title: (context) => MyFormRoute(),
+  itemList[13].title: (context) => FlexLayoutRoute(),
 };

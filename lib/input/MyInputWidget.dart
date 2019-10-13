@@ -87,27 +87,31 @@ class _MyInputWidgetState extends State<MyInputWidget> {
                   label: Text('详情: $input')),
               Builder(
                 builder: (ctx) {
-                  return Column(
+                  return Row(
                     children: <Widget>[
-                      RaisedButton(
-                        child: Text("移动焦点"),
-                        onPressed: () {
-                          //将焦点从第一个TextField移到第二个TextField
-                          // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
-                          // 这是第二种写法
-                          if (null == focusScopeNode) {
-                            focusScopeNode = FocusScope.of(context);
-                          }
-                          focusScopeNode.requestFocus(focusNode2);
-                        },
+                      Expanded(
+                        child: RaisedButton(
+                          child: Text("移动焦点"),
+                          onPressed: () {
+                            //将焦点从第一个TextField移到第二个TextField
+                            // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
+                            // 这是第二种写法
+                            if (null == focusScopeNode) {
+                              focusScopeNode = FocusScope.of(context);
+                            }
+                            focusScopeNode.requestFocus(focusNode2);
+                          },
+                        ),
                       ),
-                      RaisedButton(
-                        child: Text("隐藏键盘"),
-                        onPressed: () {
-                          // 当所有编辑框都失去焦点时键盘就会收起
-                          focusNode1.unfocus();
-                          focusNode2.unfocus();
-                        },
+                      Expanded(
+                        child: RaisedButton(
+                          child: Text("隐藏键盘"),
+                          onPressed: () {
+                            // 当所有编辑框都失去焦点时键盘就会收起
+                            focusNode1.unfocus();
+                            focusNode2.unfocus();
+                          },
+                        ),
                       ),
                     ],
                   );
