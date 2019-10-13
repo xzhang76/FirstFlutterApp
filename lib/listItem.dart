@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
 import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/snackBar.dart';
+import 'package:myapp/stack/MyStackRoute.dart';
 import 'package:myapp/widgets/MyWidgetsHome.dart';
 
 import 'Flex/MyFlexWidget.dart';
@@ -37,6 +38,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'Input', icon: Icons.input),
   const ListItem(title: 'Form', icon: Icons.format_align_center),
   const ListItem(title: 'Flex', icon: Icons.new_releases),
+  const ListItem(title: 'Stack', icon: Icons.music_video),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -54,4 +56,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[11].title: (context) => MyInputWidget(),
   itemList[12].title: (context) => MyFormRoute(),
   itemList[13].title: (context) => FlexLayoutRoute(),
+  itemList[14].title: (context) => MyStackRoute(),
 };
