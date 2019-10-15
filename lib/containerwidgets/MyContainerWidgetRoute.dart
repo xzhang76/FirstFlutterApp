@@ -170,7 +170,23 @@ class _MyContainerWidgetRouteState extends State<MyContainerWidgetRoute> {
               ),
               Text("你好", style: TextStyle(color: Colors.green, fontSize: 18.0),)
             ],
-          )
+          ),
+          SizedBox(height: 10),
+          //RotatedBox的变换是在layout阶段，会影响在子组件的位置和大小
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              DecoratedBox(
+                decoration: BoxDecoration(color: Colors.red),
+                //将Transform.rotate换成RotatedBox
+                child: RotatedBox(
+                  quarterTurns: 1, //旋转90度(1/4圈)
+                  child: Text("Hello"),
+                ),
+              ),
+              Text("你好", style: TextStyle(color: Colors.green, fontSize: 18.0),)
+            ],
+          ),
         ],
       ),
     );
