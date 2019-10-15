@@ -67,35 +67,51 @@ class _MyContainerWidgetRouteState extends State<MyContainerWidgetRoute> {
             constraints: BoxConstraints(
                 minWidth: double.infinity, //宽度尽可能大
                 minHeight: 50.0 //最小高度为50像素
-            ),
+                ),
             child: Container(
                 height: 5.0, //因为指定了最小高度为50,所以不生效
-                child: redBox
-            ),
+                child: redBox),
           ),
-          SizedBox(
-              width: 80.0,
-              height: 80.0,
-              child: redBox
-          ),
+          SizedBox(width: 80.0, height: 80.0, child: redBox),
           //多重限制,父子中相应数值较大的
           ConstrainedBox(
               constraints: BoxConstraints(minWidth: 200.0, minHeight: 20.0),
               child: ConstrainedBox(
                 constraints: BoxConstraints(minWidth: 60.0, minHeight: 30.0),
                 child: redBox,
-              )
-          ),
+              )),
           ConstrainedBox(
-              constraints: BoxConstraints(minWidth: 60.0, minHeight: 100.0),  //父
+              constraints: BoxConstraints(minWidth: 60.0, minHeight: 100.0), //父
               //"去除"父级限制,但注意并非是真正的去除
               //父ConstrainedBox是作用于子UnconstrainedBox上，而redBox只受子ConstrainedBox限制
-              child: UnconstrainedBox( //“去除”父级限制
+              child: UnconstrainedBox(
+                //“去除”父级限制
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(minWidth: 90.0, minHeight: 20.0),//子
+                  constraints: BoxConstraints(minWidth: 90.0, minHeight: 20.0),
+                  //子
                   child: redBox,
                 ),
-              )
+              )),
+          DecoratedBox(
+            position: DecorationPosition.background, //或者不写
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.red, Colors.orange[700]]), //背景渐变
+                borderRadius: BorderRadius.circular(3.0), //3像素圆角
+                boxShadow: [
+                  //阴影
+                  BoxShadow(
+                      color: Colors.black54,
+                      offset: Offset(2.0, 2.0),
+                      blurRadius: 4.0)
+                ]),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 18.0),
+              child: Text(
+                "Login",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           )
         ],
       ),
