@@ -188,6 +188,55 @@ class _MyContainerWidgetRouteState extends State<MyContainerWidgetRoute> {
                 Text("你好", style: TextStyle(color: Colors.green, fontSize: 18.0),)
               ],
             ),
+            Container(
+              margin: EdgeInsets.only(top: 10.0, left: 0.0, bottom: 50.0), //容器外填充
+              constraints: BoxConstraints.tightFor(width: 200.0, height: 150.0), //卡片大小
+              decoration: BoxDecoration(//背景装饰
+                  gradient: RadialGradient( //背景径向渐变
+                      colors: [Colors.red, Colors.orange],
+                      center: Alignment.topLeft,
+                      radius: .98
+                  ),
+                  boxShadow: [ //卡片阴影
+                    BoxShadow(
+                        color: Colors.black54,
+                        offset: Offset(2.0, 2.0),
+                        blurRadius: 4.0
+                    )
+                  ]
+              ),
+              transform: Matrix4.rotationZ(.2), //卡片倾斜变换
+              alignment: Alignment.center, //卡片内文字居中
+              child: Text( //卡片文字
+                "5.20", style: TextStyle(color: Colors.white, fontSize: 40.0),
+              ),
+            ),
+            //margin的留白是在容器外部，而padding的留白是在容器内部
+            Container(
+              margin: EdgeInsets.all(20.0), //容器外补白
+              color: Colors.orange,
+              child: Text("Hello world!"),
+            ),
+            Container(
+              padding: EdgeInsets.all(20.0), //容器内补白
+              color: Colors.orange,
+              child: Text("Hello world!"),
+            ),
+//Container内margin和padding都是通过Padding 组件来实现的
+//            Padding(
+//              padding: EdgeInsets.all(20.0),
+//              child: DecoratedBox(
+//                decoration: BoxDecoration(color: Colors.orange),
+//                child: Text("Hello world!"),
+//              ),
+//            ),
+//            DecoratedBox(
+//              decoration: BoxDecoration(color: Colors.orange),
+//              child: Padding(
+//                padding: const EdgeInsets.all(20.0),
+//                child: Text("Hello world!"),
+//              ),
+//            ),
           ],
         ),
       )
