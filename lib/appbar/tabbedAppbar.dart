@@ -12,33 +12,40 @@ class TabbedAppBarSample extends StatefulWidget {
   }
 }
 
-class _TabbedAppBarSampleState extends State<TabbedAppBarSample> {
+class _TabbedAppBarSampleState extends State<TabbedAppBarSample>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController; //需要定义一个Controller
+
+  @override
+  void initState() {
+    super.initState();
+    // 创建Controller
+    _tabController = TabController(length: choices.length, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return new DefaultTabController(
-          length: choices.length,
-          child: new Scaffold(
-            appBar: new AppBar(
-              title: new Text('Tabbed Appbar'),
-              bottom: new TabBar(
-                  isScrollable: true,
-                  tabs: choices.map((Choice choice) {
-                    return new Tab(
-                      text: choice.title,
-                      icon: new Icon(choice.icon),
-                    );
-                  }).toList()),
-            ),
-            body: new TabBarView(
-                children: choices.map((Choice choice) {
-                  return new Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: new ChoiceCard(
-                        choice: choice,
-                      ));
-                }).toList()),
-          ),
+    return new Scaffold(
+      appBar: AppBar(
+        bottom: new TabBar(
+            controller: _tabController,
+            isScrollable: true,
+            tabs: choices.map((Choice choice) {
+              return new Tab(
+                text: choice.title,
+                icon: new Icon(choice.icon),
+              );
+            }).toList()),
+      ),
+      body: new TabBarView(
+          controller: _tabController,
+          children: choices.map((Choice choice) {
+            return new Padding(
+                padding: EdgeInsets.all(16.0),
+                child: new ChoiceCard(
+                  choice: choice,
+                ));
+          }).toList()),
     );
   }
 }
