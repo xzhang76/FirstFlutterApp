@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
 import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/scaffold/ScaffoldRoute.dart';
+import 'package:myapp/scrollview/InfiniteListViewRoute.dart';
 import 'package:myapp/scrollview/ListViewRoute.dart';
 import 'package:myapp/scrollview/SingleChildScrollViewRoute.dart';
 import 'package:myapp/snackBar.dart';
@@ -47,6 +48,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'Scaffold', icon: Icons.access_alarm),
   const ListItem(title: 'SingleScrollView', icon: Icons.scanner),
   const ListItem(title: 'ListView', icon: Icons.filter_list),
+  const ListItem(title: 'InfiniteListView', icon: Icons.rate_review),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -69,4 +71,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[16].title: (context) => ScaffoldRoute(),
   itemList[17].title: (context) => SingleChildScrollViewRoute(),
   itemList[18].title: (context) => ListViewRoute(),
+  itemList[19].title: (context) => InfiniteListViewRoute(),
 };
