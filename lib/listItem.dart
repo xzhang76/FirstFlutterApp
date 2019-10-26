@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
 import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/scaffold/ScaffoldRoute.dart';
+import 'package:myapp/scrollview/CustomScrollViewRoute.dart';
 import 'package:myapp/scrollview/GridViewRoute.dart';
 import 'package:myapp/scrollview/InfiniteGridViewRoute.dart';
 import 'package:myapp/scrollview/InfiniteListViewRoute.dart';
@@ -53,6 +54,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'InfiniteListView', icon: Icons.rate_review),
   const ListItem(title: 'GridView', icon: Icons.grid_on),
   const ListItem(title: 'InfiniteGridView', icon: Icons.grid_off),
+  const ListItem(title: 'CustomScrollView', icon: Icons.center_focus_weak),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -78,4 +80,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[19].title: (context) => InfiniteListViewRoute(),
   itemList[20].title: (context) => GridViewRoute(),
   itemList[21].title: (context) => InfiniteGridViewRoute(),
+  itemList[22].title: (context) => CustomScrollViewRoute(),
 };
