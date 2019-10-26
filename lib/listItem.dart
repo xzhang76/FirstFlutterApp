@@ -8,6 +8,7 @@ import 'package:myapp/scrollview/InfiniteGridViewRoute.dart';
 import 'package:myapp/scrollview/InfiniteListViewRoute.dart';
 import 'package:myapp/scrollview/ListViewRoute.dart';
 import 'package:myapp/scrollview/ScrollControllerRoute.dart';
+import 'package:myapp/scrollview/ScrollNotificationRoute.dart';
 import 'package:myapp/scrollview/SingleChildScrollViewRoute.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/stack/MyStackRoute.dart';
@@ -57,6 +58,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'InfiniteGridView', icon: Icons.grid_off),
   const ListItem(title: 'CustomScrollView', icon: Icons.center_focus_weak),
   const ListItem(title: 'ScrollControllerView', icon: Icons.accessibility),
+  const ListItem(title: 'ScrollNotification', icon: Icons.accessibility),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -84,4 +86,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[21].title: (context) => InfiniteGridViewRoute(),
   itemList[22].title: (context) => CustomScrollViewRoute(),
   itemList[23].title: (context) => ScrollControllerRoute(),
+  itemList[24].title: (context) => ScrollNotificationRoute(),
 };
