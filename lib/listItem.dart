@@ -23,6 +23,7 @@ import 'button/myAllButton.dart';
 import 'containerwidgets/MyContainerWidgetRoute.dart';
 import 'drawer/MyHomePage.dart';
 import 'form/MyFormWidget.dart';
+import 'inheritedwidget/InheritedWidgetTestRoute.dart';
 import 'input/MyInputWidget.dart';
 import 'myBottomNavigationBar.dart';
 
@@ -59,6 +60,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'CustomScrollView', icon: Icons.center_focus_weak),
   const ListItem(title: 'ScrollControllerView', icon: Icons.accessibility),
   const ListItem(title: 'ScrollNotification', icon: Icons.accessibility),
+  const ListItem(title: 'InheritedWidget', icon: Icons.backup),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -87,4 +89,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[22].title: (context) => CustomScrollViewRoute(),
   itemList[23].title: (context) => ScrollControllerRoute(),
   itemList[24].title: (context) => ScrollNotificationRoute(),
+  itemList[25].title: (context) => InheritedWidgetTestRoute(),
 };
