@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/provider/ProviderRoute.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
 import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/scaffold/ScaffoldRoute.dart';
@@ -61,6 +62,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'ScrollControllerView', icon: Icons.accessibility),
   const ListItem(title: 'ScrollNotification', icon: Icons.accessibility),
   const ListItem(title: 'InheritedWidget', icon: Icons.backup),
+  const ListItem(title: 'ProviderRoute', icon: Icons.battery_alert),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -90,4 +92,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[23].title: (context) => ScrollControllerRoute(),
   itemList[24].title: (context) => ScrollNotificationRoute(),
   itemList[25].title: (context) => InheritedWidgetTestRoute(),
+  itemList[26].title: (context) => ProviderRoute(),
 };
