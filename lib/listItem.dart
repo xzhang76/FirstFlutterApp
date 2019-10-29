@@ -21,6 +21,7 @@ import 'appbar/tabbedAppbar.dart';
 import 'bottombar/bottomBar.dart';
 import 'button/iconButton.dart';
 import 'button/myAllButton.dart';
+import 'colortheme/ThemeRoute.dart';
 import 'containerwidgets/MyContainerWidgetRoute.dart';
 import 'drawer/MyHomePage.dart';
 import 'form/MyFormWidget.dart';
@@ -63,6 +64,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'ScrollNotification', icon: Icons.accessibility),
   const ListItem(title: 'InheritedWidget', icon: Icons.backup),
   const ListItem(title: 'ProviderRoute', icon: Icons.battery_alert),
+  const ListItem(title: 'ProviderRoute', icon: Icons.palette),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -93,4 +95,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[24].title: (context) => ScrollNotificationRoute(),
   itemList[25].title: (context) => InheritedWidgetTestRoute(),
   itemList[26].title: (context) => ProviderRoute(),
+  itemList[27].title: (context) => ThemeRoute(),
 };
