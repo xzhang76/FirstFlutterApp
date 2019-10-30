@@ -25,6 +25,8 @@ import 'colortheme/ThemeRoute.dart';
 import 'containerwidgets/MyContainerWidgetRoute.dart';
 import 'drawer/MyHomePage.dart';
 import 'form/MyFormWidget.dart';
+import 'futrue/FutureBuilderRoute.dart';
+import 'futrue/StremBuilderRoute.dart';
 import 'inheritedwidget/InheritedWidgetTestRoute.dart';
 import 'input/MyInputWidget.dart';
 import 'myBottomNavigationBar.dart';
@@ -64,7 +66,9 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'ScrollNotification', icon: Icons.accessibility),
   const ListItem(title: 'InheritedWidget', icon: Icons.backup),
   const ListItem(title: 'ProviderRoute', icon: Icons.battery_alert),
-  const ListItem(title: 'ProviderRoute', icon: Icons.palette),
+  const ListItem(title: 'ThemeRoute', icon: Icons.palette),
+  const ListItem(title: 'FutureBuilderRoute', icon: Icons.favorite),
+  const ListItem(title: 'StreamBuilder', icon: Icons.favorite),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -96,4 +100,6 @@ Map<String, WidgetBuilder> routes = {
   itemList[25].title: (context) => InheritedWidgetTestRoute(),
   itemList[26].title: (context) => ProviderRoute(),
   itemList[27].title: (context) => ThemeRoute(),
+  itemList[28].title: (context) => FutureBuilderRoute(),
+  itemList[29].title: (context) => StreamBuilderRoute(),
 };
