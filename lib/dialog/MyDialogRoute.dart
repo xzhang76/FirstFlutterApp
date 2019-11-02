@@ -43,6 +43,11 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
                 child: Text('ListDialog'),
                 onPressed: ()  {
                   showListDialog(context);
+                }),
+            RaisedButton(
+                child: Text('WidgetListDialog'),
+                onPressed: ()  {
+                  showAnotherListDialog(context);
                 })
           ],
         ),
@@ -124,6 +129,47 @@ Future<void> showListDialog(BuildContext context) async {
       //使用AlertDialog会报错
       //return AlertDialog(content: child);
       return Dialog(child: child);
+    },
+  );
+  if (index != null) {
+    print("点击了：$index");
+  }
+}
+
+Future<void> showAnotherListDialog(BuildContext context) async {
+  int index = await showDialog<int>(
+    context: context,
+    builder: (BuildContext context) {
+      var child = Column(
+        children: <Widget>[
+          ListTile(title: Text("请选择")),
+          Expanded(
+              child: ListView.builder(
+                itemCount: 30,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text("$index"),
+                    onTap: () => Navigator.of(context).pop(index),
+                  );
+                },
+              )),
+        ],
+      );
+      //可以返回非Dialog的widget
+//      return UnconstrainedBox(
+//        child: ConstrainedBox(
+//          constraints: BoxConstraints(maxWidth: 280),
+//          child: Material(
+//            child: child,
+//            type: MaterialType.card,
+//          ),
+//        ),
+//        constrainedAxis: Axis.vertical,
+//      );
+      return Card(
+        child: child,
+        margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
+      );
     },
   );
   if (index != null) {
