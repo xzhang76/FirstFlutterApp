@@ -79,6 +79,22 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
                   } else {
                     print("确认");
                   }
+                }),
+            RaisedButton(
+                child: Text('AlertDialog'),
+                onPressed: () async {
+                  bool sure = await showAlertDialog1(context: context);
+                  if (sure == null) {
+                    print("取消");
+                  } else {
+                    print("确认");
+                  }
+                }),
+            RaisedButton(
+                child: Text('ModalBottomDialog'),
+                onPressed: () async {
+                  int type = await _showModalBottomSheet(context: context);
+                  print(type);
                 })
           ],
         ),
@@ -254,3 +270,88 @@ Future<T> showCustomDialog<T>({
     transitionBuilder: _buildMaterialDialogTransitions,
   );
 }
+
+Future<bool> showAlertDialog1({@required BuildContext context}) {
+  var _withTree = false;
+  return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('提示'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("您确定要删除当前文件吗?"),
+              Row(
+                children: <Widget>[
+                  Text("同时删除子目录？"),
+//                  //使用StatefulBuilder来构建StatefulWidget上下文
+//                  StatefulBuilder(
+//                    builder: (context, _setState) {
+//                      return Checkbox(
+//                        value: _withTree, //默认不选中
+//                        onChanged: (bool value) {
+//                          //_setState方法实际就是该StatefulWidget的setState方法，
+//                          //调用后builder方法会重新被调用
+//                          _setState(() {
+//                            //更新选中状态
+//                            _withTree = !_withTree;
+//                          });
+//                        },
+//                      );
+//                    },
+//                  ),
+                  // 通过Builder来获得构建Checkbox的`context`，
+                  // 这是一种常用的缩小`context`范围的方式
+                  Builder(
+                    builder: (BuildContext context) {
+                      return Checkbox(
+                        value: _withTree,
+                        onChanged: (bool value) {
+                          (context as Element).markNeedsBuild();
+                          _withTree = !_withTree;
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text('Sure'),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            )
+          ],
+        );
+      });
+}
+
+// 弹出底部菜单列表模态对话框
+Future<int> _showModalBottomSheet({@required BuildContext context}) {
+  return showModalBottomSheet<int>(
+    context: context,
+    builder: (BuildContext context) {
+      return ListView.builder(
+        itemCount: 30,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text("$index"),
+            onTap: () => Navigator.of(context).pop(index),
+          );
+        },
+      );
+    },
+  );
+}
+
