@@ -22,7 +22,7 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
             RaisedButton(
                 child: Text('AlertDialog'),
                 onPressed: () async {
-                  bool sure = await showAlertDialog(context);
+                  bool sure = await showAlertDialog(context: context);
                   if (sure == null) {
                     print("取消");
                   } else {
@@ -32,7 +32,7 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
             RaisedButton(
                 child: Text('SimpleDialog'),
                 onPressed: () async {
-                  int index = await showSimpleDialog(context);
+                  int index = await showSimpleDialog(context: context);
                   if (index == 1) {
                     print("中文简体");
                   } else {
@@ -41,13 +41,44 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
                 }),
             RaisedButton(
                 child: Text('ListDialog'),
-                onPressed: ()  {
-                  showListDialog(context);
+                onPressed: () {
+                  showListDialog(context: context);
                 }),
             RaisedButton(
                 child: Text('WidgetListDialog'),
-                onPressed: ()  {
-                  showAnotherListDialog(context);
+                onPressed: () {
+                  showAnotherListDialog(context: context);
+                }),
+            RaisedButton(
+                child: Text('CustomDialog'),
+                onPressed: () async {
+                  bool sure = await showCustomDialog<bool>(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text('AlertDialog'),
+                          content: Text('Are you sure?'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Cancel'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            FlatButton(
+                              child: Text('Sure'),
+                              onPressed: () {
+                                Navigator.of(context).pop(true);
+                              },
+                            )
+                          ],
+                        );
+                      });
+                  if (sure == null) {
+                    print("取消");
+                  } else {
+                    print("确认");
+                  }
                 })
           ],
         ),
@@ -56,7 +87,7 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
   }
 }
 
-Future<bool> showAlertDialog(BuildContext context) {
+Future<bool> showAlertDialog({@required BuildContext context}) {
   return showDialog<bool>(
       context: context,
       builder: (context) {
@@ -81,7 +112,7 @@ Future<bool> showAlertDialog(BuildContext context) {
       });
 }
 
-Future<int> showSimpleDialog(BuildContext context) {
+Future<int> showSimpleDialog({@required BuildContext context}) {
   return showDialog<int>(
       context: context,
       builder: (context) {
@@ -107,7 +138,7 @@ Future<int> showSimpleDialog(BuildContext context) {
       });
 }
 
-Future<void> showListDialog(BuildContext context) async {
+Future<void> showListDialog({@required BuildContext context}) async {
   int index = await showDialog<int>(
     context: context,
     builder: (BuildContext context) {
@@ -116,14 +147,14 @@ Future<void> showListDialog(BuildContext context) async {
           ListTile(title: Text("请选择")),
           Expanded(
               child: ListView.builder(
-                itemCount: 30,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text("$index"),
-                    onTap: () => Navigator.of(context).pop(index),
-                  );
-                },
-              )),
+            itemCount: 30,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text("$index"),
+                onTap: () => Navigator.of(context).pop(index),
+              );
+            },
+          )),
         ],
       );
       //使用AlertDialog会报错
@@ -136,7 +167,7 @@ Future<void> showListDialog(BuildContext context) async {
   }
 }
 
-Future<void> showAnotherListDialog(BuildContext context) async {
+Future<void> showAnotherListDialog({@required BuildContext context}) async {
   int index = await showDialog<int>(
     context: context,
     builder: (BuildContext context) {
@@ -145,14 +176,14 @@ Future<void> showAnotherListDialog(BuildContext context) async {
           ListTile(title: Text("请选择")),
           Expanded(
               child: ListView.builder(
-                itemCount: 30,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text("$index"),
-                    onTap: () => Navigator.of(context).pop(index),
-                  );
-                },
-              )),
+            itemCount: 30,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text("$index"),
+                onTap: () => Navigator.of(context).pop(index),
+              );
+            },
+          )),
         ],
       );
       //可以返回非Dialog的widget
@@ -175,4 +206,51 @@ Future<void> showAnotherListDialog(BuildContext context) async {
   if (index != null) {
     print("点击了：$index");
   }
+}
+
+Widget _buildMaterialDialogTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child) {
+  // 使用缩放动画
+  return ScaleTransition(
+    scale: CurvedAnimation(
+      parent: animation,
+      curve: Curves.easeOut,
+    ),
+    child: child,
+  );
+}
+
+Future<T> showCustomDialog<T>({
+  @required BuildContext context,
+  bool barrierDismissible = true,
+  WidgetBuilder builder,
+}) {
+  final ThemeData theme = Theme.of(context, shadowThemeOnly: true);
+  return showGeneralDialog(
+    context: context,
+    pageBuilder: (BuildContext context, Animation<double> animation,
+        Animation<double> secondaryAnimation) {
+      final Widget pageChild = Builder(builder: builder);
+      return SafeArea(
+        child: Builder(
+          builder: (BuildContext context) {
+            return theme != null
+                ? Theme(data: theme, child: pageChild)
+                : pageChild;
+          },
+        ),
+      );
+    },
+    //点击遮罩是否关闭对话框
+    barrierDismissible: barrierDismissible,
+    barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+    barrierColor: Colors.black87,
+    //自定义遮罩颜色
+    transitionDuration: const Duration(milliseconds: 150),
+    //对话框打开/关闭的动画
+    transitionBuilder: _buildMaterialDialogTransitions,
+  );
 }
