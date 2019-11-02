@@ -95,6 +95,18 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
                 onPressed: () async {
                   int type = await _showModalBottomSheet(context: context);
                   print(type);
+                }),
+            RaisedButton(
+                child: Text('LoadingDialog'),
+                onPressed: () async {
+                  bool sure = await showLoadingDialog(context: context);
+                  print(sure);
+                }),
+            RaisedButton(
+                child: Text('TimePickerDialog'),
+                onPressed: () async {
+                  DateTime date = await _showDatePicker(context: context);
+                  print(date);
                 })
           ],
         ),
@@ -352,6 +364,57 @@ Future<int> _showModalBottomSheet({@required BuildContext context}) {
         },
       );
     },
+  );
+}
+
+Future<bool> showLoadingDialog({@required BuildContext context}) {
+  return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return UnconstrainedBox(
+          constrainedAxis: Axis.vertical,
+          child: SizedBox(
+            width: 280,
+            child: AlertDialog(
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  CircularProgressIndicator(value: .8,),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 26.0),
+                    child: Text("正在加载，请稍后..."),
+                  )
+                ],
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  child: Text('Sure'),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                )
+              ],
+            ),
+          ),
+
+        );
+      });
+}
+Future<DateTime> _showDatePicker({@required BuildContext context}) {
+  var date = DateTime.now();
+  return showDatePicker(
+    context: context,
+    initialDate: date,
+    firstDate: date,
+    lastDate: date.add( //未来30天可选
+      Duration(days: 30),
+    ),
   );
 }
 
