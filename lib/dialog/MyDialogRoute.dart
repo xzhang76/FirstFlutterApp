@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyDialogRoute extends StatefulWidget {
@@ -106,6 +107,12 @@ class _MyDialogRouteSate extends State<MyDialogRoute> {
                 child: Text('TimePickerDialog'),
                 onPressed: () async {
                   DateTime date = await _showDatePicker(context: context);
+                  print(date);
+                }),
+            RaisedButton(
+                child: Text('CupertinoTimePickerDialog'),
+                onPressed: () async {
+                  DateTime date = await _showDatePicker2(context: context);
                   print(date);
                 })
           ],
@@ -415,6 +422,28 @@ Future<DateTime> _showDatePicker({@required BuildContext context}) {
     lastDate: date.add( //未来30天可选
       Duration(days: 30),
     ),
+  );
+}
+Future<DateTime> _showDatePicker2({@required BuildContext context}) {
+  var date = DateTime.now();
+  return showCupertinoModalPopup(
+    context: context,
+    builder: (context) {
+      return SizedBox(
+        height: 200,
+        child: CupertinoDatePicker(
+          mode: CupertinoDatePickerMode.dateAndTime,
+          minimumDate: date,
+          maximumDate: date.add(
+            Duration(days: 30),
+          ),
+          maximumYear: date.year + 1,
+          onDateTimeChanged: (DateTime value) {
+            print(value);
+          },
+        ),
+      );
+    },
   );
 }
 
