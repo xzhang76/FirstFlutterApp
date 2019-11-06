@@ -29,6 +29,7 @@ import 'drawer/MyHomePage.dart';
 import 'form/MyFormWidget.dart';
 import 'futrue/FutureBuilderRoute.dart';
 import 'futrue/StremBuilderRoute.dart';
+import 'gesture/DragRoute.dart';
 import 'gesture/GestureDetectorRoute.dart';
 import 'inheritedwidget/InheritedWidgetTestRoute.dart';
 import 'input/MyInputWidget.dart';
@@ -75,6 +76,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'DialogRoute', icon: Icons.add_comment),
   const ListItem(title: 'ListenerRoute', icon: Icons.add_a_photo),
   const ListItem(title: 'GestureDetectorRoute', icon: Icons.account_balance),
+  const ListItem(title: 'DragRoute', icon: Icons.account_circle),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -111,4 +113,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[30].title: (context) => MyDialogRoute(),
   itemList[31].title: (context) => ListenerRoute(),
   itemList[32].title: (context) => GestureDetectorRoute(),
+  itemList[33].title: (context) => DragRoute(),
 };
