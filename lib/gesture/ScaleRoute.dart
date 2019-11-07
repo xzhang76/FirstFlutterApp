@@ -12,7 +12,7 @@ class _ScaleRouteState extends State<ScaleRoute>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('DragRoute'),
+          title: Text('ScaleRoute'),
         ),
         body: Center(
           child: GestureDetector(

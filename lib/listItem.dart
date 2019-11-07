@@ -31,6 +31,7 @@ import 'futrue/FutureBuilderRoute.dart';
 import 'futrue/StremBuilderRoute.dart';
 import 'gesture/DragRoute.dart';
 import 'gesture/GestureDetectorRoute.dart';
+import 'gesture/GestureRecognizerRoute.dart';
 import 'gesture/ScaleRoute.dart';
 import 'inheritedwidget/InheritedWidgetTestRoute.dart';
 import 'input/MyInputWidget.dart';
@@ -79,6 +80,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'GestureDetectorRoute', icon: Icons.account_balance),
   const ListItem(title: 'DragRoute', icon: Icons.account_circle),
   const ListItem(title: 'ScaleRoute', icon: Icons.backup),
+  const ListItem(title: 'GestureRecognizerRoute', icon: Icons.beach_access),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -117,4 +119,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[32].title: (context) => GestureDetectorRoute(),
   itemList[33].title: (context) => DragRoute(),
   itemList[34].title: (context) => ScaleRoute(),
+  itemList[35].title: (context) => GestureRecognizerRoute(),
 };
