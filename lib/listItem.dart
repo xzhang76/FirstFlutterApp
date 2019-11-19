@@ -4,6 +4,7 @@ import 'package:myapp/provider/ProviderRoute.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
 import 'package:myapp/routedemo/MyRouteHome.dart';
 import 'package:myapp/scaffold/ScaffoldRoute.dart';
+import 'package:myapp/scaleanimation/ScaleAnimationRoute.dart';
 import 'package:myapp/scrollview/CustomScrollViewRoute.dart';
 import 'package:myapp/scrollview/GridViewRoute.dart';
 import 'package:myapp/scrollview/InfiniteGridViewRoute.dart';
@@ -83,6 +84,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'ScaleRoute', icon: Icons.backup),
   const ListItem(title: 'GestureRecognizerRoute', icon: Icons.beach_access),
   const ListItem(title: 'BothDirectionTestRoute', icon: Icons.beenhere),
+  const ListItem(title: 'ScaleAnimationRoute', icon: Icons.block),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -123,4 +125,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[34].title: (context) => ScaleRoute(),
   itemList[35].title: (context) => GestureRecognizerRoute(),
   itemList[36].title: (context) => BothDirectionTestRoute(),
+  itemList[37].title: (context) => ScaleAnimationRoute(),
 };
