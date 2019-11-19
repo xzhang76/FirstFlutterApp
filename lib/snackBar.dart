@@ -28,7 +28,7 @@ class SnackBarWidget extends StatelessWidget {
       body: new Center(
         child: DefaultTextStyle(
           style: TextStyle(
-            color:Colors.red,
+            color: Colors.red,
             fontSize: 20.0,
           ),
           textAlign: TextAlign.start,
@@ -46,11 +46,11 @@ class SnackBarWidget extends StatelessWidget {
               )),
               Text("hello world"),
               Text("I am Jack"),
-              Text("I am Jack",
+              Text(
+                "I am Jack",
                 style: TextStyle(
                     inherit: false, //2.不继承默认样式
-                    color: Colors.grey
-                ),
+                    color: Colors.grey),
               ),
             ],
           ),
@@ -61,17 +61,27 @@ class SnackBarWidget extends StatelessWidget {
 }
 
 void openNextPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Next Page'),
-      ),
-      body: const Center(
-        child: Text(
-          'This is next Page',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }));
+  Navigator.push(
+      context,
+      PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 500), //动画时间为500毫秒
+          pageBuilder: (BuildContext context, Animation animation,
+              Animation secondaryAnimation) {
+            return FadeTransition(
+              child: Scaffold(
+                appBar: new AppBar(
+                  title: new Text('Next Page'),
+                ),
+                body: const Center(
+                  child: Text(
+                    'This is next Page',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
+              ),
+              opacity: animation,
+            );
+          }
+      )
+  );
 }
