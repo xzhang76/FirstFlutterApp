@@ -18,25 +18,28 @@ class _ScaleAnimationRoute extends State<ScaleAnimationRoute>
     controller = new AnimationController(
         duration: const Duration(seconds: 3), vsync: this);
     //使用弹性曲线
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeInBack);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
     //图片宽高从0变到300
-    animation = new Tween(begin: 0.0, end: 300.0).animate(animation)
-      ..addListener(() {
-        setState(() {});
-      });
+    animation = new Tween(begin: 0.0, end: 300.0).animate(animation);
     //启动动画(正向执行)
     controller.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Material(
-      child: new Center(
-        child: Image.asset(
-          "./images/city.jpg",
-          width: animation.value,
-          height: animation.value,
-        ),
+    return Material(
+      child: AnimatedBuilder(
+        animation: animation,
+        child: Image.asset("./images/city.jpg"),
+        builder: (BuildContext context, Widget child) {
+          return Center(
+            child: Container(
+              height: animation.value,
+              width: animation.value,
+              child: child,
+            ),
+          );
+        },
       ),
     );
   }
