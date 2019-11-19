@@ -15,6 +15,7 @@ import 'package:myapp/scrollview/ScrollNotificationRoute.dart';
 import 'package:myapp/scrollview/SingleChildScrollViewRoute.dart';
 import 'package:myapp/snackBar.dart';
 import 'package:myapp/stack/MyStackRoute.dart';
+import 'package:myapp/staggeranimation/StaggerAnimationRoute.dart';
 import 'package:myapp/widgets/MyWidgetsHome.dart';
 
 import 'Flex/MyFlexWidget.dart';
@@ -87,6 +88,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'BothDirectionTestRoute', icon: Icons.beenhere),
   const ListItem(title: 'ScaleAnimationRoute', icon: Icons.block),
   const ListItem(title: 'HeroRoute', icon: Icons.blur_circular),
+  const ListItem(title: 'StaggerAnimation', icon: Icons.blur_linear),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -129,4 +131,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[36].title: (context) => BothDirectionTestRoute(),
   itemList[37].title: (context) => ScaleAnimationRoute(),
   itemList[38].title: (context) => HeroAnimationRoute(),
+  itemList[39].title: (context) => StaggerRoute(),
 };
