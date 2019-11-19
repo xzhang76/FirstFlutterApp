@@ -1,5 +1,28 @@
 import 'package:flutter/material.dart';
 
+class GrowTransition extends StatelessWidget {
+  final Animation<double> animation;
+  final Widget child;
+
+  const GrowTransition({Key key, this.animation, this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AnimatedBuilder(
+          animation: animation,
+          child: child,
+          builder: (BuildContext context, Widget child) {
+            return Container(
+              child: child,
+              width: animation.value,
+              height: animation.value,
+            );
+          }),
+    );
+  }
+}
+
 class ScaleAnimationRoute extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -28,20 +51,10 @@ class _ScaleAnimationRoute extends State<ScaleAnimationRoute>
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: AnimatedBuilder(
-        animation: animation,
-        child: Image.asset("./images/city.jpg"),
-        builder: (BuildContext context, Widget child) {
-          return Center(
-            child: Container(
-              height: animation.value,
-              width: animation.value,
-              child: child,
-            ),
-          );
-        },
-      ),
-    );
+        child: GrowTransition(
+          animation: animation,
+          child: Image.asset("./images/city.jpg"),
+    ));
   }
 
   dispose() {
