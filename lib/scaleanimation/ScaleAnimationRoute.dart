@@ -43,7 +43,7 @@ class _ScaleAnimationRoute extends State<ScaleAnimationRoute>
     //使用弹性曲线
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
     //图片宽高从0变到300
-    animation = new Tween(begin: 0.0, end: 300.0).animate(animation);
+    animation = new Tween(begin: 0.0, end: 1.0).animate(animation);
     //启动动画(正向执行)
     controller.forward();
   }
@@ -51,10 +51,15 @@ class _ScaleAnimationRoute extends State<ScaleAnimationRoute>
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: GrowTransition(
-          animation: animation,
-          child: Image.asset("./images/city.jpg"),
-    ));
+//        child: FadeTransition(
+//          opacity: animation,
+//          child: Image.asset("./images/city.jpg"),
+//        )
+      child: RotationTransition(
+        turns: animation,
+        child: Image.asset("./images/city.jpg"),
+      )
+    );
   }
 
   dispose() {
