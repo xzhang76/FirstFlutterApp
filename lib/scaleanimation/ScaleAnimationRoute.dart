@@ -41,9 +41,18 @@ class _ScaleAnimationRoute extends State<ScaleAnimationRoute>
     controller = new AnimationController(
         duration: const Duration(seconds: 3), vsync: this);
     //使用弹性曲线
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
     //图片宽高从0变到300
     animation = new Tween(begin: 0.0, end: 1.0).animate(animation);
+    animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        //动画执行结束时反向执行动画
+        controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        //动画恢复到初始状态时执行动画（正向）
+        controller.forward();
+      }
+    });
     //启动动画(正向执行)
     controller.forward();
   }
