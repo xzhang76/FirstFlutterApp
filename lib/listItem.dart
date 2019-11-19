@@ -35,6 +35,7 @@ import 'gesture/DragRoute.dart';
 import 'gesture/GestureDetectorRoute.dart';
 import 'gesture/GestureRecognizerRoute.dart';
 import 'gesture/ScaleRoute.dart';
+import 'hero/HeroAnimationRoute.dart';
 import 'inheritedwidget/InheritedWidgetTestRoute.dart';
 import 'input/MyInputWidget.dart';
 import 'myBottomNavigationBar.dart';
@@ -85,6 +86,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'GestureRecognizerRoute', icon: Icons.beach_access),
   const ListItem(title: 'BothDirectionTestRoute', icon: Icons.beenhere),
   const ListItem(title: 'ScaleAnimationRoute', icon: Icons.block),
+  const ListItem(title: 'HeroRoute', icon: Icons.blur_circular),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -126,4 +128,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[35].title: (context) => GestureRecognizerRoute(),
   itemList[36].title: (context) => BothDirectionTestRoute(),
   itemList[37].title: (context) => ScaleAnimationRoute(),
+  itemList[38].title: (context) => HeroAnimationRoute(),
 };
