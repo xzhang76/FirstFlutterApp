@@ -26,6 +26,7 @@ import 'bottombar/bottomBar.dart';
 import 'button/iconButton.dart';
 import 'button/myAllButton.dart';
 import 'colortheme/ThemeRoute.dart';
+import 'composedwidgets/gradient_button_route.dart';
 import 'containerwidgets/MyContainerWidgetRoute.dart';
 import 'dialog/MyDialogRoute.dart';
 import 'drawer/MyHomePage.dart';
@@ -91,6 +92,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'HeroRoute', icon: Icons.blur_circular),
   const ListItem(title: 'StaggerAnimation', icon: Icons.blur_linear),
   const ListItem(title: 'AnimatedSwitcher', icon: Icons.blur_circular),
+  const ListItem(title: 'ComposedGradientButton', icon: Icons.border_all),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -135,4 +137,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[38].title: (context) => HeroAnimationRoute(),
   itemList[39].title: (context) => StaggerRoute(),
   itemList[40].title: (context) => AnimatedSwitcherCounterRoute(),
+  itemList[41].title: (context) => GradientButtonRoute(),
 };
