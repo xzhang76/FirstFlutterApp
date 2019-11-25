@@ -19,6 +19,7 @@ import 'package:myapp/staggeranimation/StaggerAnimationRoute.dart';
 import 'package:myapp/widgets/MyWidgetsHome.dart';
 
 import 'Flex/MyFlexWidget.dart';
+import 'animatedswitcher/animatedSwitcherCounter.dart';
 import 'appbar/simpleAppbar.dart';
 import 'appbar/tabbedAppbar.dart';
 import 'bottombar/bottomBar.dart';
@@ -89,6 +90,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'ScaleAnimationRoute', icon: Icons.block),
   const ListItem(title: 'HeroRoute', icon: Icons.blur_circular),
   const ListItem(title: 'StaggerAnimation', icon: Icons.blur_linear),
+  const ListItem(title: 'AnimatedSwitcher', icon: Icons.blur_circular),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -132,4 +134,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[37].title: (context) => ScaleAnimationRoute(),
   itemList[38].title: (context) => HeroAnimationRoute(),
   itemList[39].title: (context) => StaggerRoute(),
+  itemList[40].title: (context) => AnimatedSwitcherCounterRoute(),
 };
