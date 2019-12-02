@@ -30,6 +30,7 @@ import 'button/myAllButton.dart';
 import 'colortheme/ThemeRoute.dart';
 import 'composedwidgets/gradient_button_route.dart';
 import 'containerwidgets/MyContainerWidgetRoute.dart';
+import 'custompaint/custom_paint_route.dart';
 import 'dialog/MyDialogRoute.dart';
 import 'drawer/MyHomePage.dart';
 import 'form/MyFormWidget.dart';
@@ -97,6 +98,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'ComposedGradientButton', icon: Icons.border_all),
   const ListItem(title: 'AnimatedWidgetsTest', icon: Icons.check),
   const ListItem(title: 'CombinedTurnBox', icon: Icons.center_focus_weak),
+  const ListItem(title: 'CustomPaint', icon: Icons.cached),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -144,4 +146,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[41].title: (context) => GradientButtonRoute(),
   itemList[42].title: (context) => AnimatedWidgetsTest(),
   itemList[43].title: (context) => TurnBoxRoute(),
+  itemList[44].title: (context) => CustomPaintRoute(),
 };
