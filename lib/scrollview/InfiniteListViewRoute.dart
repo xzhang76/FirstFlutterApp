@@ -1,4 +1,3 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -86,7 +85,7 @@ class _InfiniteListViewRouteState extends State<InfiniteListViewRoute> {
       _words.insertAll(
           _words.length - 1,
           //每次生成20个单词
-          generateWordPairs().take(20).map((e) => e.asPascalCase).toList());
+          null);
       setState(() {
         //重新构建列表
       });

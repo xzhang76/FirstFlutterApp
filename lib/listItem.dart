@@ -20,6 +20,7 @@ import 'package:myapp/widgets/MyWidgetsHome.dart';
 
 import 'Flex/MyFlexWidget.dart';
 import 'animatedswitcher/animatedSwitcherCounter.dart';
+import 'animatedwidgets/animated_widgets_route.dart';
 import 'appbar/simpleAppbar.dart';
 import 'appbar/tabbedAppbar.dart';
 import 'bottombar/bottomBar.dart';
@@ -93,6 +94,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'StaggerAnimation', icon: Icons.blur_linear),
   const ListItem(title: 'AnimatedSwitcher', icon: Icons.blur_circular),
   const ListItem(title: 'ComposedGradientButton', icon: Icons.border_all),
+  const ListItem(title: 'AnimatedWidgetsTest', icon: Icons.check),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -138,4 +140,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[39].title: (context) => StaggerRoute(),
   itemList[40].title: (context) => AnimatedSwitcherCounterRoute(),
   itemList[41].title: (context) => GradientButtonRoute(),
+  itemList[42].title: (context) => AnimatedWidgetsTest(),
 };
