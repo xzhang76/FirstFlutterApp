@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/combineturnbox/turn_box_route.dart';
+import 'package:myapp/custompaint/gradient_circular_progress_route.dart';
 import 'package:myapp/listener/ListenerRoute.dart';
 import 'package:myapp/provider/ProviderRoute.dart';
 import 'package:myapp/radiobutton/MyRadioDemo.dart';
@@ -99,6 +100,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'AnimatedWidgetsTest', icon: Icons.check),
   const ListItem(title: 'CombinedTurnBox', icon: Icons.center_focus_weak),
   const ListItem(title: 'CustomPaint', icon: Icons.cached),
+  const ListItem(title: 'GradientCircularProgress', icon: Icons.cake),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -147,4 +149,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[42].title: (context) => AnimatedWidgetsTest(),
   itemList[43].title: (context) => TurnBoxRoute(),
   itemList[44].title: (context) => CustomPaintRoute(),
+  itemList[45].title: (context) => GradientCircularProgressRoute(),
 };
