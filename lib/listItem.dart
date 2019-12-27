@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/combineturnbox/turn_box_route.dart';
 import 'package:myapp/custompaint/gradient_circular_progress_route.dart';
+import 'package:myapp/dio/dio_example.dart';
 import 'package:myapp/file/file_operation_route.dart';
 import 'package:myapp/listener/ListenerRoute.dart';
 import 'package:myapp/provider/ProviderRoute.dart';
@@ -103,6 +104,7 @@ const List<ListItem> itemList = const <ListItem>[
   const ListItem(title: 'CustomPaint', icon: Icons.cached),
   const ListItem(title: 'GradientCircularProgress', icon: Icons.cake),
   const ListItem(title: 'FileOperation', icon: Icons.camera_alt),
+  const ListItem(title: 'DioExample', icon: Icons.clear),
 ];
 
 Map<String, WidgetBuilder> routes = {
@@ -153,4 +155,5 @@ Map<String, WidgetBuilder> routes = {
   itemList[44].title: (context) => CustomPaintRoute(),
   itemList[45].title: (context) => GradientCircularProgressRoute(),
   itemList[46].title: (context) => FileOperationRoute(),
+  itemList[47].title: (context) => DioExampleRoute(),
 };
